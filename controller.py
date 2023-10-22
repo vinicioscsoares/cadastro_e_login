@@ -53,7 +53,7 @@ class ControllerLogin():
     senha = hashlib.sha256(senha.encode()).hexdigest()
     logado = session.query(Pessoa).filter(Pessoa.email == email).filter(Pessoa.senha == senha).all()
     if len(logado) == 1:
-      return True
+      return {'logado' : True, 'id': logado[0].id}
     else:
       return False
     
